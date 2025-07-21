@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Anyaa 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #e6f5ec;
+      color: #2e8b57;
+      text-align: center;
+      padding: 40px 20px;
+      background-image: url('https://www.transparenttextures.com/patterns/floral.png');
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      color: #007f5f;
+    }
+
+    .message {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8em;
+      margin: 30px auto;
+      max-width: 800px;
+      background-color: #d9f3e0;
+      border: 3px dashed #007f5f;
+      border-radius: 20px;
+      padding: 30px;
+      color: #007f5f;
+    }
+
+    .flower {
+      font-size: 2em;
+      margin: 10px;
+    }
+
+    img {
+      width: 300px;
+      border-radius: 20px;
+      margin-top: 30px;
+      border: 4px solid #007f5f;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 1.2em;
+      color: #555;
+    }
+
+    audio {
+      margin-top: 20px;
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fffaf0;
+      border: 2px solid #007f5f;
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      font-family: 'Pacifico', cursive;
+      font-size: 1.5em;
+      color: #007f5f;
+      z-index: 1000;
+      display: none;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 999;
+      display: none;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background: #ff69b4;
+      border-radius: 50% 50% 50% 50%;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { bottom: -100px; }
+      100% { bottom: 110%; }
+    }
+  </style>
+</head>
+<body onload="showPopup(); launchConfetti(); releaseBalloons();">
+
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+    🎁 You are always special for me 💖
+  </div>
+
+  <h1>🌸 Happy Birthday, Anyaa! 🎂</h1>
+
+  <div class="flower">💐🌷🌸🌼🌺</div>
+
+  <img src="photo.jpg" alt="Anyaa and friend" />
+
+  <div class="message">
+    Happiest birthday dear Anyaa,<br>
+    May Bajrangbali bless you and always be happy, (A heart so kind, a soul so bright,
+You make even dull days feel light.
+Happy birthday, queen of grace,
+May life always give you a warm embrace. 💐) best wishes for my cutest friend 💚
+  </div>
+
+  <audio controls autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="flower">🌸🌼🌺🌷💐</div>
+
+  <div class="footer">
+    Made with 💖 by your best friend Sagar
+  </div>
+
+  <script>
+    function showPopup() {
+      document.getElementById('overlay').style.display = 'block';
+      document.getElementById('popup').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('popup').style.display = 'none';
+      }, 4000);
+    }
+
+    function launchConfetti() {
+      const duration = 5 * 1000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 5,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: ['#7fe5f0', '#007f5f', '#ffcbf2']
+        });
+        confetti({
+          particleCount: 5,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: ['#ffcbf2', '#007f5f', '#7fe5f0']
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      }());
+    }
+
+    function releaseBalloons() {
+      for (let i = 0; i < 20; i++) {
+        const balloon = document.createElement("div");
+        balloon.classList.add("balloon");
+        balloon.style.left = Math.random() * 100 + "vw";
+        balloon.style.background = `hsl(${Math.random() * 360}, 70%, 70%)`;
+        balloon.style.animationDelay = (Math.random() * 5) + "s";
+        document.body.appendChild(balloon);
+      }
+    }
+  </script>
+
+</body>
+</html>
